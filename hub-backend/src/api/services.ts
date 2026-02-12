@@ -15,10 +15,3 @@ export async function handlerServiceById(req: Request, res: Response) {
 
     res.json(service);
 }
-
-export async function handlerServicesByCategoryId(req: Request, res: Response) {
-    const id = req.params.id;
-    const filtered = services.filter((s) => s.categoryId === id);
-
-    res.json(filtered); // returning empty array [] if no services is ok
-}
