@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.handlerAllServices = handlerAllServices;
 exports.handlerServiceById = handlerServiceById;
-exports.handlerServicesByCategoryId = handlerServicesByCategoryId;
 const services_js_1 = require("../data/services.js");
 async function handlerAllServices(req, res) {
     res.json(services_js_1.services);
@@ -14,9 +13,4 @@ async function handlerServiceById(req, res) {
         return res.status(404).json({ error: "Service not found" });
     }
     res.json(service);
-}
-async function handlerServicesByCategoryId(req, res) {
-    const id = req.params.id;
-    const filtered = services_js_1.services.filter((s) => s.categoryId === id);
-    res.json(filtered); // returning empty array [] if no services is ok
 }

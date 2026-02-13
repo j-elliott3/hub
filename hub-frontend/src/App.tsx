@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HomePage } from "./pages/HomePage.tsx";
+import { CategoryPage } from "./pages/CategoryPage.tsx";
+import { ServicePage } from "./pages/ServicePage.tsx";
 import './App.css'
 
 function App() {
@@ -16,11 +18,12 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<HomePage />} />
-          {/* TODO: add routes for /categories/:categoryId and /services/:serviceId */}
+          <Route path="/categories/:categoryId" element={<CategoryPage />}/>
+          <Route path="/services/:serviceId" element={<ServicePage />}/>
         </Routes>
       </div>
     </BrowserRouter>
-  )
+  );
 }
 
 export default App;

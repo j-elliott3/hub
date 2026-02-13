@@ -12,7 +12,7 @@ export function CategoryCard({ category }: CategoryCardProps) {
 
     return (
         <Link
-            to={`/categproes/${id}`}
+            to={`/categories/${id}`}
             style={{
                 // Move to CSS later
                 display: "block",

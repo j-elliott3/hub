@@ -17,3 +17,9 @@ export async function fetchCategories(): Promise<Category[]> {
     // Parse and return JSON as Category[]
     return response.json();
 }
+
+export async function fetchCategoryById(id: string): Promise<Category> {
+  const res = await fetch(`${API_BASE}/api/categories/${id}`);
+  if (!res.ok) throw new Error("Category not found");
+  return res.json();
+}
