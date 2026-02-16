@@ -1,13 +1,15 @@
 import { Request, Response } from "express";
-import { services } from "../data/services.js";
+import { getServices, getServiceById } from "../db/queries/services.js";
 
 export async function handlerAllServices(req: Request, res: Response) {
+    const services = await getServices();
+
     res.json(services);
 }
 
 export async function handlerServiceById(req: Request, res: Response) {
-    const id = req.params.id;
-    const service = services.find((s) => s.id === id);
+    const id = req.params.id as string;
+    const service = await getServiceById(id);
 
     if (!service) {
         return res.status(404).json({ error: "Service not found" });

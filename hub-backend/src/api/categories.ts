@@ -1,14 +1,16 @@
 import { Request, Response } from "express";
-import { categories } from "../data/categories.js";
-import { services } from "../data/services.js";
+import { getCategories, getCategoryById } from "../db/queries/categories.js";
+import { getServicesByCategoryId } from "../db/queries/services.js";
 
 export async function handlerAllCategories(req: Request, res: Response) {
+    const categories = await getCategories();
+
     res.json(categories);
 }
 
 export async function handlerCategoryById(req: Request, res: Response) {
-    const id = req.params.id;
-    const category = categories.find((c) => c.id === id);
+    const id = req.params.id as string;
+    const category = await getCategoryById(id);
 
     if (!category) {
         return res.status(404).json({ error: "Category not found" });
@@ -18,8 +20,8 @@ export async function handlerCategoryById(req: Request, res: Response) {
 }
 
 export async function handlerServicesByCategoryId(req: Request, res: Response) {
-    const id = req.params.id;
-    const filtered = services.filter((s) => s.categoryId === id);
+    const categoryId = req.params.id as string;
+    const filteredServices = await getServicesByCategoryId(categoryId);
 
-    res.json(filtered); // returning empty array [] if no services is ok
+    res.json(filteredServices);
 }

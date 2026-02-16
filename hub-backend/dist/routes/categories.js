@@ -1,12 +1,6 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.categoryRouter = void 0;
-const express_1 = __importDefault(require("express"));
-const categories_js_1 = require("../api/categories.js");
-exports.categoryRouter = express_1.default.Router();
-exports.categoryRouter.get("/", categories_js_1.handlerAllCategories);
-exports.categoryRouter.get("/:id", categories_js_1.handlerCategoryById);
-exports.categoryRouter.get("/:id/services", categories_js_1.handlerServicesByCategoryId);
+import express from "express";
+import { handlerAllCategories, handlerCategoryById, handlerServicesByCategoryId } from "../api/categories.js";
+export const categoryRouter = express.Router();
+categoryRouter.get("/", handlerAllCategories);
+categoryRouter.get("/:id", handlerCategoryById);
+categoryRouter.get("/:id/services", handlerServicesByCategoryId);
