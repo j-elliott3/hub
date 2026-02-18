@@ -46,5 +46,9 @@ In hub-backend/package.json:
 
 "scripts": {
   "add:category": "tsx src/scripts/addCategory.ts",
-  "add:service": "tsx src/scripts/addService.ts"
+  "add:service": "tsx src/scripts/addService.ts",
+  "update:category": "tsx src/scripts/updateCategory.ts",
+  "update:service": "tsx src/scripts/updateService.ts",
+  "delete:category": "tsx src/scripts/deleteCategory.ts",
+  "delete:service": "tsx src/scripts/deleteService.ts",
 }
